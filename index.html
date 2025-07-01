@@ -1,140 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>The Roast of Harshith</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #1f1f1f;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-        }
-        .container {
-            max-width: 100%;
-            margin: auto;
-            padding: 10px;
-        }
-        img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 1rem;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px #ff5e5e;
-        }
-        button {
-            background: #ff5e5e;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .question, .result {
-            margin-top: 20px;
-            font-size: 16px;
-        }
-        .options button {
-            margin: 10px 5px;
-            background: #333;
-            padding: 10px 16px;
-            font-size: 14px;
-            border: 1px solid #999;
-            border-radius: 6px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Roast of Harshith</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #1f1f1f;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 100%;
+      margin: auto;
+      padding: 10px;
+    }
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 1rem;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #ff5e5e;
+    }
+    button {
+      background: #ff5e5e;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .question, .result {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .options button {
+      margin: 10px 5px;
+      background: #333;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: 1px solid #999;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔥 The Roast of harSHITh 🔥</h1>
-        <img src="https://i.imgflip.com/30b1gx.jpg" alt="Birthday Meme Lord" />
-        <div id="game">
-            <button onclick="startGame()">Start Roast</button>
-        </div>
+  <div class="container">
+    <h1>🔥 The Roast of harSHITh 🔥</h1>
+    <img src="https://i.imgflip.com/30b1gx.jpg" alt="Birthday Meme Lord" />
+    <div id="game">
+      <button onclick="startGame()">Start Roast</button>
     </div>
+  </div>
 
-    <!-- Sound Effects -->
-    <audio id="correct-sfx" preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_78eced192d.mp3?filename=correct-2-46134.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="wrong-sfx" preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f52131f6e2.mp3?filename=error-1-126514.mp3" type="audio/mpeg">
-    </audio>
+  <!-- Sound Effects -->
+  <audio id="correct-sfx" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_78eced192d.mp3?filename=correct-2-46134.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="wrong-sfx" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f52131f6e2.mp3?filename=error-1-126514.mp3" type="audio/mpeg">
+  </audio>
 
-    <script>
-        const questions = [
-            {
-                q: "What does Harshith eat when he wants to feel dangerous?",
-                options: ["Paneer with attitude", "Spicy broccoli", "Non-veg in dreams", "Air fried air"],
-                answer: 2
-            },
-            {
-                q: "What’s Harshith’s morning routine?",
-                options: ["Wake up, send meme, repeat", "Prayers & protein shakes", "Eat chicken—wait, no", "Write cringe veg jokes"],
-                answer: 0
-            },
-            {
-                q: "Harshith’s idea of romance is…",
-                options: ["Candlelight dinner (with gobi)", "Sending 3 dark memes in a row", "Holding hands after poha", "Paneer bouquet"],
-                answer: 1
-            }
-        ];
+  <script>
+    const questions = [
+      {
+        q: "What does Harshith eat when he wants to feel dangerous?",
+        options: ["Paneer with attitude", "Spicy broccoli", "Non-veg in dreams", "Air fried air"],
+        answer: 2
+      },
+      {
+        q: "What’s Harshith’s morning routine?",
+        options: ["Wake up, send meme, repeat", "Prayers & protein shakes", "Eat chicken—wait, no", "Write cringe veg jokes"],
+        answer: 0
+      },
+      {
+        q: "Harshith’s idea of romance is…",
+        options: ["Candlelight dinner (with gobi)", "Sending 3 dark memes in a row", "Holding hands after poha", "Paneer bouquet"],
+        answer: 1
+      }
+    ];
 
-        let current = 0;
-        let score = 0;
+    let current = 0;
+    let score = 0;
 
-        function startGame() {
-            score = 0;
-            current = 0;
-            document.getElementById("correct-sfx").load();
-            document.getElementById("wrong-sfx").load();
-            showQuestion();
-        }
+    function startGame() {
+      score = 0;
+      current = 0;
+      document.getElementById("correct-sfx").load();
+      document.getElementById("wrong-sfx").load();
+      showQuestion();
+    }
 
-        function showQuestion() {
-            const q = questions[current];
-            let html = "<div class='question'><h3>" + q.q + "</h3><div class='options'>";
-            for (let i = 0; i < q.options.length; i++) {
-                html += "<button onclick='checkAnswer(" + i + ")'>" + q.options[i] + "</button>";
-            }
-            html += "</div></div>";
-            document.getElementById("game").innerHTML = html;
-        }
+    function showQuestion() {
+      const q = questions[current];
+      let html = "<div class='question'><h3>" + q.q + "</h3><div class='options'>";
+      for (let i = 0; i < q.options.length; i++) {
+        html += "<button onclick='checkAnswer(" + i + ")'>" + q.options[i] + "</button>";
+      }
+      html += "</div></div>";
+      document.getElementById("game").innerHTML = html;
+    }
 
-        function checkAnswer(choice) {
-            const correctSound = document.getElementById("correct-sfx");
-            const wrongSound = document.getElementById("wrong-sfx");
+    function checkAnswer(choice) {
+      const correctSound = document.getElementById("correct-sfx");
+      const wrongSound = document.getElementById("wrong-sfx");
 
-            if (choice === questions[current].answer) {
-                score++;
-                correctSound.play().catch(() => {});
-                current++;
-                if (current < questions.length) showQuestion();
-                else showResult();
-            } else {
-                wrongSound.play().catch(() => {});
-                alert("Wrong! Your veg brain glitched. Try again...");
-            }
-        }
+      if (choice === questions[current].answer) {
+        score++;
+        correctSound.play().catch(() => {});
+        current++;
+        if (current < questions.length) showQuestion();
+        else showResult();
+      } else {
+        wrongSound.play().catch(() => {});
+        alert("Wrong! Your veg brain glitched. Try again...");
+      }
+    }
 
-        function showResult() {
-            document.getElementById("game").innerHTML = `
-                <div class='result'>
-                    <h2>🎉 Roast Over 🎉</h2>
-                    <p>You scored ${score}/${questions.length}... not bad for a leaf-eating meme machine.</p>
-                    <p style='margin-top:20px;font-size:18px;'>❤️ Okay, enough roasting...</p>
-                    <p style='margin-top:10px;'>Harshith, you’ve been in every happy and sad moment of my life since we met.<br/>
-                    No matter how stupid the memes are (and they’re very stupid), I wouldn’t trade a single one.<br/>
-                    Hope, we die still sharing memes that make no sense and laughing like idiots.<br/>
-                    Love you, ya vegetarian meme freak. ❤️</p>
-                    <h3 style='margin-top:30px;color:#ffcc00;'>🎂 Happy Birthday My Broo! 🎂</h3>
-                </div>`;
-        }
-    </script>
+    function showResult() {
+      document.getElementById("game").innerHTML = `
+        <div class='result'>
+          <h2>🎉 Roast Over 🎉</h2>
+          <p>You scored ${score}/${questions.length}... not bad for a leaf-eating meme machine.</p>
+          <p style='margin-top:20px;font-size:18px;'>❤️ Okay, enough roasting...</p>
+          <p style='margin-top:10px;'>Harshith, you’ve been in every happy and sad moment of my life since we met.<br/>
+          No matter how stupid the memes are (and they’re very stupid), I wouldn’t trade a single one.<br/>
+          Hope, we die still sharing memes that make no sense and laughing like idiots.<br/>
+          Love you, ya vegetarian meme freak. ❤️</p>
+          <h3 style='margin-top:30px;color:#ffcc00;'>🎂 Happy Birthday My Broo! 🎂</h3>
+        </div>`;
+    }
+  </script>
 </body>
 </html>
