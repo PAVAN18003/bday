@@ -58,12 +58,12 @@
     </div>
   </div>
 
-  <!-- Sound Effects -->
+  <!-- Working Sound Effects -->
   <audio id="correct-sfx" preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_78eced192d.mp3?filename=correct-2-46134.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-video-game-win-2016.mp3" type="audio/mpeg">
   </audio>
   <audio id="wrong-sfx" preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f52131f6e2.mp3?filename=error-1-126514.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-player-losing-or-failing-2042.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -91,8 +91,6 @@
     function startGame() {
       score = 0;
       current = 0;
-      document.getElementById("correct-sfx").load();
-      document.getElementById("wrong-sfx").load();
       showQuestion();
     }
 
@@ -112,12 +110,16 @@
 
       if (choice === questions[current].answer) {
         score++;
-        correctSound.play().catch(() => {});
+        correctSound.pause();
+        correctSound.currentTime = 0;
+        correctSound.play().catch((e) => console.log("Correct sound blocked:", e));
         current++;
         if (current < questions.length) showQuestion();
         else showResult();
       } else {
-        wrongSound.play().catch(() => {});
+        wrongSound.pause();
+        wrongSound.currentTime = 0;
+        wrongSound.play().catch((e) => console.log("Wrong sound blocked:", e));
         alert("Wrong! Your veg brain glitched. Try again...");
       }
     }
